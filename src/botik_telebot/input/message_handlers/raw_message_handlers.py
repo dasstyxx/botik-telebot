@@ -1,5 +1,6 @@
 import logging
 
+from botik.input.message_handlers.events import events
 from botik.input.message_handlers.raw_message_handlers import RawMessageHandlers
 
 
@@ -29,7 +30,7 @@ class RawMessageHandlers(RawMessageHandlers):
         location = message.location
 
         await user.storage.set("location", location)
-        await self.events.geo_share(user, location)
+        await events.geo_share(user, location)
 
     async def phone_reply(self, message):
         user = await self._get_user_from_message(message)
@@ -37,4 +38,4 @@ class RawMessageHandlers(RawMessageHandlers):
         logging.debug(f"Got a number! {number}")
 
         await user.storage.set("phone", number)
-        await self.events.contact_share(user, number)
+        await events.contact_share(user, number)
