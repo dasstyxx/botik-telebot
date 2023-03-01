@@ -38,9 +38,8 @@ class RawMessageHandlers(RawMessageHandlers):
 
     async def photo_reply(self, message):
         user = await self._get_user_from_message(message)
-        msg_photos = message.photo
         handler = PhotoAttachmentHandler(self.bot)
-        photo = await handler.from_server(msg_photos)
+        photo = await handler.from_server(message)
         await events.got_attachment(user, photo)
 
     async def phone_reply(self, message):

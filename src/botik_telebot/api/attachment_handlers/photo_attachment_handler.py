@@ -13,8 +13,8 @@ class PhotoAttachmentHandler:
         img_bytes.seek(0)
         return img_bytes
 
-    async def from_server(self, photo):
-        file_id = photo[-1].file_id
+    async def from_server(self, message):
+        file_id = message.photo[-1].file_id
         file_info = await self.bot.get_file(file_id)
         downloaded_file = await self.bot.download_file(file_info.file_path)
         return Image.open(io.BytesIO(downloaded_file))
