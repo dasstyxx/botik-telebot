@@ -12,7 +12,9 @@ from botik_telebot.page.page_factory import TgPageFactory
 class TgApp(App):
     def start(self):
         self.initialize()
-        asyncio.run(self.bot.polling())
+        loop = asyncio.get_event_loop()
+        loop.create_task(self.bot.polling())
+        loop.run_forever()
 
     def __init__(self, bot, start_callback=None):
         super().__init__(bot)
