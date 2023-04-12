@@ -21,6 +21,10 @@ keywords = [
     "botik",
 ]
 
+dependencies = [
+    "pyTelegramBotAPI==4.7.0"
+]
+
 [project.urls]
 "Homepage" = "https://github.com/dasstyx/botik-telebot"
 "Bug Tracker" = "https://github.com/dasstyx/botik-telebot/issues"
